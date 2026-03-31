@@ -4,7 +4,7 @@ import React from 'react'
 
 const Service = () => {
   return (
-    <section id='services' className='w-full container mx-auto px-6 relative pt-16 md:pt-20 pb-16 md:pb-24 flex flex-col items-center justify-start'>
+    <section id='services' className='w-full container mx-auto px-6 relative pt-24 md:pt-32 pb-24 md:pb-32 flex flex-col items-center justify-start'>
          <h2 className='text-2xl md:text-4xl lg:text-5xl font-bold font-serif italic text-[#4B2E2B] mb-4 tracking-tight'>
             HELLO!
           </h2>
