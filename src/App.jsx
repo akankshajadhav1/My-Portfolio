@@ -16,22 +16,22 @@ function App() {
 
   return (
     <>
-      <div className='w-screen min-h-screen flex-1'>
+      <div className='w-screen min-h-screen flex-1 overflow-x-hidden'>
         {/* Header */}
-        <Header/>
+        <Header />
         {/* Home */}
-        <Home/>
+        <Home />
         {/* Work */}
-        <Works/>
+        <Works />
         {/* About */}
-        <About/>
+        <About />
         {/* Services */}
-        <Service/>
+        <Service />
         {/* Testimonials */}
         {/* Contact */}
-        <Contact/>
+        <Contact />
         {/* Footer */}
-<Footer/>
+        <Footer />
       </div>
     </>
   )
