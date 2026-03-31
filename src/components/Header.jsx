@@ -58,8 +58,13 @@ const Header = () => {
   };
 
   return (
-    <header className='flex items-center justify-between w-full p-4 md:p-8 fixed top-0 left-0 z-50 bg-gradient-to-b from-[#FFFBF1]/90 to-transparent backdrop-blur-sm'>
-      <h1 className='text-2xl md:text-4xl italic font-bold font-serif text-[#612D53] justify-self-start'>
+    <header className={cn(
+      'flex items-center justify-between w-full p-3 md:p-8 fixed top-0 left-0 z-50 transition-colors duration-300',
+      mobileMenuOpen
+        ? 'bg-[#FFFBF1]'
+        : 'bg-gradient-to-b from-[#FFFBF1]/90 to-transparent backdrop-blur-sm'
+    )}>
+      <h1 className='text-xl md:text-4xl italic font-bold font-serif text-[#612D53] justify-self-start'>
         Ak.
       </h1>
 
@@ -109,20 +114,20 @@ const Header = () => {
 
       {/* Mobile Hamburger Button */}
       <button
-        className='md:hidden p-2 rounded-lg hover:bg-black/5 transition-colors z-50'
+        className='md:hidden p-2 rounded-lg hover:bg-black/5 transition-colors z-[60] relative'
         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
       >
         {mobileMenuOpen
-          ? <X size={24} className="text-[#4B2E2B]" />
-          : <Menu size={24} className="text-[#4B2E2B]" />
+          ? <X size={22} className="text-[#4B2E2B]" />
+          : <Menu size={22} className="text-[#4B2E2B]" />
         }
       </button>
 
       {/* Mobile Menu Overlay */}
       <div
         className={cn(
-          'fixed inset-0 bg-black/40 backdrop-blur-sm z-40 md:hidden transition-opacity duration-300',
+          'fixed inset-0 bg-black/50 backdrop-blur-sm z-[55] md:hidden transition-opacity duration-300',
           mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         )}
         onClick={() => setMobileMenuOpen(false)}
@@ -131,12 +136,27 @@ const Header = () => {
       {/* Mobile Menu Drawer */}
       <div
         className={cn(
-          'fixed top-0 right-0 h-full w-[75%] max-w-[300px] bg-[#FFFBF1] shadow-2xl z-50 md:hidden',
+          'fixed top-0 right-0 h-full w-[75%] max-w-[300px] bg-[#FFFBF1] shadow-[-8px_0_30px_rgba(0,0,0,0.15)] z-[60] md:hidden',
           'transform transition-transform duration-300 ease-in-out',
           mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
         )}
       >
-        <div className='flex flex-col pt-20 px-6'>
+        {/* Close button inside drawer */}
+        <div className='flex items-center justify-between px-4 pt-4'>
+          <h2 className='text-lg font-bold font-serif italic text-[#612D53]'>Menu</h2>
+          <button
+            className='p-2 rounded-lg hover:bg-[#A98B76]/10 transition-colors'
+            onClick={() => setMobileMenuOpen(false)}
+            aria-label='Close menu'
+          >
+            <X size={22} className="text-[#4B2E2B]" />
+          </button>
+        </div>
+
+        {/* Divider */}
+        <div className='mx-4 mt-2 mb-2 h-px bg-[#A98B76]/20'></div>
+
+        <div className='flex flex-col px-4'>
           <nav>
             <ul className='flex flex-col gap-1'>
               {NavMenu.map((menu) => {
@@ -148,9 +168,9 @@ const Header = () => {
                       href={menu.url}
                       onClick={(e) => handleNavigationLinkClick(e, menu)}
                       className={cn(
-                        'block py-3 px-4 rounded-lg text-base transition-all duration-200',
+                        'block py-3 px-4 rounded-lg text-sm font-medium transition-all duration-200',
                         isActive
-                          ? 'text-[#4B2E2B] font-bold bg-[#A98B76]/10'
+                          ? 'text-[#4B2E2B] font-bold bg-[#A98B76]/15 border-l-3 border-[#A98B76]'
                           : 'text-neutral-500 hover:text-[#4B2E2B] hover:bg-[#A98B76]/5'
                       )}
                     >
@@ -162,7 +182,7 @@ const Header = () => {
             </ul>
           </nav>
 
-          <div className='mt-6 px-4'>
+          <div className='mt-6 px-2'>
             <a href="/?section=contact"
               onClick={(e) => handleNavigationLinkClick(e, {
                 label: "Contact",
