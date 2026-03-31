@@ -8,6 +8,8 @@ import Home from './containers/home'
 import Works from './containers/works.jsx'
 import About from './containers/about.jsx'
 import Service from './containers/service'
+import Contact from './containers/contact'
+import Footer from './components/Footer'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -27,8 +29,9 @@ function App() {
         <Service/>
         {/* Testimonials */}
         {/* Contact */}
+        <Contact/>
         {/* Footer */}
-
+<Footer/>
       </div>
     </>
   )

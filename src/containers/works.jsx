@@ -3,7 +3,7 @@ import { projects } from '../utils/helper'
 
 const Works = () => {
   return (
-    <section id="works" className='w-full min-h-screen bg-gradient-to-br from-[#f3eee2] via-[#f1e9df] to-[#dcd9d7] py-16 md:py-24 px-4 md:px-8'>
+    <section id="work" className='w-full min-h-screen bg-gradient-to-br from-[#f3eee2] via-[#f1e9df] to-[#dcd9d7] py-16 md:py-24 px-4 md:px-8'>
       <div className='max-w-7xl mx-auto'>
         {/* Section Header */}
         <div className='text-center mb-12 md:mb-16'>
